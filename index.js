@@ -9,6 +9,7 @@ function Book(name,author,pages,isRead){
 
 
 function addBookToLibrary() {
+    event.preventDefault();
     const name = document.getElementById("name").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
@@ -28,7 +29,12 @@ function addBookToLibrary() {
 
     myLibrary.forEach((book)=>{
         const listItem = document.createElement('li');
-        listItem.textContent = `${book.name} by ${book.author}, ${book.pages} pages. ${book.isRead ? 'Read' : 'Not Read'}`;
+        listItem.innerHTML = `
+        <strong>Name:</strong> ${book.name}<br>
+        <strong>Author:</strong> ${book.author}<br>
+        <strong>Pages:</strong> ${book.pages}<br>
+        <strong>Status:</strong> ${book.isRead ? 'Read' : 'Not Read'}
+    `;
         libraryList.appendChild(listItem);
     })
 
