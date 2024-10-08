@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div> <h1>Library </h1> <button class="open-btn" onclick="openForm()"> Add </button></div>
+   
+    <div class = "form-popup" id="myForm">
+        <form onsubmit="addBookToLibrary(); return false;" class="form-container">
+            <h1>Add a book to library</h1>
+
+            <label for="name"><b>Name</b></label>
+            <input type="text" id="name" placeholder="Name of book" name="name" required>
+
+            <label for="author"><b>Author</b></label>
+            <input type="text" id="author" placeholder="author" name="author" required>
+
+            <label for="pages"><b>Pages</b></label>
+            <input type="number" id="pages" placeholder="pages" name="pages" required>
+
+            <label for="isRead"><b>Have you read this one?</b></label>
+            <input type="checkbox" id="isRead" placeholder="read" name="isRead" >
+
+            <button type="submit" class="btn">Add</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+        </form>
+    </div>
+    <div id="books">
+        <h2>My Library</h2>
+            <ul id="libraryList"></ul>
+    </div>
+    <script src="index.js"></script>
+
+
+</body>
+</html>
