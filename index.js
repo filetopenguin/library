@@ -8,7 +8,7 @@ function Book(name,author,pages,isRead){
 }
 
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
     event.preventDefault();
     const name = document.getElementById("name").value;
     const author = document.getElementById("author").value;
@@ -19,25 +19,35 @@ function addBookToLibrary() {
      myLibrary.push(newBook);
      displayLibrary();
      
-     document.getElementById("myForm").reset();
-     closeForm();
+     document.querySelector(".form-container").reset();
+     
   }
 
   function displayLibrary(){
     const libraryList = document.querySelector("#libraryList");
     libraryList.innerHTML='';
 
-    myLibrary.forEach((book)=>{
+    myLibrary.forEach((book,index)=>{
         const listItem = document.createElement('li');
         listItem.innerHTML = `
         <strong>Name:</strong> ${book.name}<br>
         <strong>Author:</strong> ${book.author}<br>
         <strong>Pages:</strong> ${book.pages}<br>
-        <strong>Status:</strong> ${book.isRead ? 'Read' : 'Not Read'}
+        <strong></strong><button id="read-btn" onclick="readBook(${index})"> ${book.isRead ? 'Read' : 'Not Read'}</button><br>
+        <strong><button id="remove-btn" onclick="removeBook(${index})">remove</button>
     `;
         libraryList.appendChild(listItem);
     })
 
+  }
+  function removeBook(index) {
+    myLibrary.splice(index, 1); 
+    displayLibrary(); 
+}
+
+  function readBook(index){
+    myLibrary[index].isRead = !myLibrary[index].isRead;
+    displayLibrary(); 
   }
   function openForm() {
     document.getElementById("myForm").style.display = "block";

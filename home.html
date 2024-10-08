@@ -8,10 +8,10 @@
 
 </head>
 <body>
-    <div> <h1>Library </h1> <button class="open-btn" onclick="openForm()"> Add </button></div>
+    <div id="title"> <h1>Library </h1> <button class="open-btn" onclick="openForm()"> Add </button></div>
    
     <div class = "form-popup" id="myForm">
-        <form onsubmit="addBookToLibrary(); return false;" class="form-container">
+        <form onsubmit="addBookToLibrary(event); return false;" class="form-container">
             <h1>Add a book to library</h1>
 
             <label for="name"><b>Name</b></label>
